@@ -1,5 +1,5 @@
 
-def seq(n):
+def seq1(n):
     r = [0]
     last_indexes = dict()
     for i in range(1, n):
@@ -21,7 +21,7 @@ def find(arr: list, term: int) -> int:
 
 def seq2(n):
     r = [0]
-    for i in range(1, n + 1):
+    for i in range(1, n):
         if r[i - 1] in r[:-1]:
             r.append(i - 1 - find(r[:-1], r[i - 1]))
         else:
@@ -29,7 +29,18 @@ def seq2(n):
     return r
 
 
+def seq(n):
+    r = [0]
+    for i in range(1, n):
+        if r[i - 1] in r[:-1]:
+            r.append(i - 1 - find(r[:-1], r[i - 1]))
+        else:
+            r.append(0)
+    return r[-1]
+
+
 
 if __name__ == "__main__":
-    print(seq2(20))
+    # print(seq2(20))
+    print(seq(0))
     # print(find([0, 0, 1, 0, 2, 0, 2], 1))
