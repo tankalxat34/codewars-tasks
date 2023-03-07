@@ -22,15 +22,7 @@ def sum_strings(x: str, y: str) -> str:
             in_mind = "0"
             result += str(summ)
 
-    result = result[::-1]
-
-    for i in range(len(result)):
-        if result[i] == "0":
-            result = result[i + 1:]
-        else:
-            break
-
-    return result or "0"
+    return result[::-1].lstrip("0") or "0"
 
 
 if __name__ == "__main__":
