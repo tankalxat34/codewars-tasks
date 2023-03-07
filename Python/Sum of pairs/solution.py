@@ -10,16 +10,22 @@ Note that this implementation returns the first pair of numbers that add up to t
 """
 
 
-def sum_pairs(lst, target):
+def sum_pairs2(lst, target):
     seen = {}
     for i, num in enumerate(lst):
         diff = target - num
         if diff in seen:
             return [lst[seen[diff]], lst[i]]
         seen[num] = i
+        print(seen)
     return None
 
-
+def sum_pairs(lst, s):
+    cache = set()
+    for n in lst:
+        if s - n in cache:
+            return [s - n, n]
+        cache.add(n)
 
 if __name__ == "__main__":
     print(sum_pairs([1, -2, 3, 0, -6, 1], -6))
